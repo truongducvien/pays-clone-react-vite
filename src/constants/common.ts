@@ -1,0 +1,3 @@
+const REQUEST_TIMEOUT = 30 * 1000; // 30s
+
+export { REQUEST_TIMEOUT };
