@@ -24,6 +24,9 @@ const getPalette = (mode: ThemeMode): PaletteOptions => ({
     background: {
       default: '#f0f6fd',
     },
+    grey: {
+      100: '#919EAB52',
+    },
   }),
 
   // DARK MODE:
@@ -44,6 +47,9 @@ const getPalette = (mode: ThemeMode): PaletteOptions => ({
     success: { main: '#2e7d31' },
     background: {
       default: '#4d4d4d',
+    },
+    grey: {
+      100: '#919EAB52',
     },
   }),
 });

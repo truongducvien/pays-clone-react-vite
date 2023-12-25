@@ -9,6 +9,12 @@ const GlobalStyles = () => {
           margin: 0,
           backgroundColor: theme?.palette?.background?.default,
         },
+        '.MuiFormControl-root .MuiOutlinedInput-notchedOutline': {
+          borderColor: theme?.palette?.grey[100],
+        },
+        '.MuiFormControl-root .MuiFormHelperText-root': {
+          fontSize: theme.typography.subtitle1.fontSize,
+        },
       }}
     />
   );
