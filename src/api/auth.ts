@@ -1,7 +1,4 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-import { UseQueryOptions } from 'react-query';
-import { useFetch, usePost } from './useReactQuery';
-import { AxiosError } from 'axios';
+import { axiosInstance } from '@/utils';
 
 export interface LogInPayload {
   userNameOrEmailAddress: string;
@@ -32,17 +29,7 @@ const ENDPOINT = {
   USER_PROFILE: 'api/services/app/User/Profile',
 };
 
-export const useLogIn = () =>
-  usePost<LogInPayload, LogInResponse>({
-    endpoint: ENDPOINT.LOG_IN,
-  });
-
-export const useGetUserProfile = (
-  params?: any,
-  options?: UseQueryOptions<User, AxiosError, User, string | string[]>
-) =>
-  useFetch<User>({
-    endpoint: ENDPOINT.USER_PROFILE,
-    params,
-    options,
-  });
+export const logIn = async (data: LogInPayload): Promise<LogInResponse> => {
+  const res = await axiosInstance.post(ENDPOINT.LOG_IN, data);
+  return res?.data.result;
+};

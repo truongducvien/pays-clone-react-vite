@@ -12,6 +12,7 @@ export default function Button(): ThemeOptions['components'] {
       borderRadius: '8px',
       lineHeight: '24px',
       textTransform: 'unset',
+      padding: '10px 16px',
     };
 
     // Style with variant:

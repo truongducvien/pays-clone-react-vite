@@ -11,6 +11,9 @@ const responsiveFontSize = ({ sm, md, lg }: Partial<Record<BreakPoint, number>>)
 
 const getTypography = (): ThemeOptions['typography'] => ({
   fontFamily: ['Open Sans', 'sans-serif'].join(),
+  allVariants: {
+    color: '#212B36',
+  },
   h1: {
     lineHeight: 42 / 34,
     fontWeight: 700,

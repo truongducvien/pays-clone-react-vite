@@ -13,7 +13,9 @@ export default function FormProvider(props: Props) {
 
   return (
     <RHFProvider {...form}>
-      <form onSubmit={onSubmit}>{children}</form>
+      <form onSubmit={onSubmit} noValidate>
+        {children}
+      </form>
     </RHFProvider>
   );
 }

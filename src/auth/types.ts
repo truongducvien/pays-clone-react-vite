@@ -1,8 +1,9 @@
-import { LogInPayload } from '@/api/auth';
+import { LogInResponse } from '@/api/auth';
 
 export interface AuthContextType {
-    isAuthenticated: boolean;
-    role?: 'Admin' | null;
-    logIn?: (payload: LogInPayload) => void;
-    logOut?: (payload: unknown) => void;
+  isAuthenticated: boolean;
+  isInitialized: boolean;
+  role?: 'Admin' | null;
+  handleLogIn: (payload: LogInResponse) => void;
+  handleLogOut: (payload: unknown) => void;
 }
