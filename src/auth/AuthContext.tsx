@@ -1,41 +1,40 @@
 import { ReactNode, createContext, useEffect, useState } from 'react';
 import { AuthContextType } from './types';
-import { LogInPayload, useLogIn } from '@/api/auth';
 import { getSessionStorage, setSessionStorage } from '@/utils';
+import { LogInResponse } from '@/api/auth';
 
 export const AuthContext = createContext<AuthContextType | null>(null);
 
 export default function AuthProvider({ children }: { children: ReactNode }) {
-    const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
+  const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
+  const [isInitialized, setIsInitialized] = useState<boolean>(false);
 
-    const { mutate } = useLogIn();
+  const initialize = async () => {
+    await new Promise((res) => {
+      setTimeout(() => {
+        res(true);
+      }, 2000);
+    });
 
-    const initialize = () => {
-        const accessToken = getSessionStorage('accessToken');
-        setIsAuthenticated(!!accessToken);
-    };
+    setIsInitialized(true);
+    const accessToken = getSessionStorage('accessToken');
+    setIsAuthenticated(!!accessToken);
+  };
 
-    const logIn = (payload: LogInPayload) => {
-        mutate(payload, {
-            onSuccess: (data) => {
-                setSessionStorage('accessToken', data.accessToken);
-                setIsAuthenticated(true);
-            },
-            onError(error, variables) {
-                console.log('error: ', error, variables);
-            },
-        });
-    };
+  const handleLogIn = (payload: LogInResponse) => {
+    setIsAuthenticated(true);
+    setSessionStorage('accessToken', payload.accessToken);
+  };
 
-    const logOut = () => {};
+  const handleLogOut = () => {};
 
-    useEffect(() => {
-        initialize();
-    }, []);
+  useEffect(() => {
+    initialize();
+  }, []);
 
-    return (
-        <AuthContext.Provider value={{ isAuthenticated, logIn, logOut }}>
-            {children}
-        </AuthContext.Provider>
-    );
+  return (
+    <AuthContext.Provider value={{ isInitialized, isAuthenticated, handleLogIn, handleLogOut }}>
+      {children}
+    </AuthContext.Provider>
+  );
 }

@@ -34,7 +34,9 @@ export default function Test() {
             ),
           }}
         />
-        <Button type="submit">Submit</Button>
+        <Button type="submit" variant={'contained'}>
+          Submit
+        </Button>
       </FormProvider>
     </Box>
   );

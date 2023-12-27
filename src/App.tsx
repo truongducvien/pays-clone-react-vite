@@ -3,21 +3,28 @@ import AuthProvider from './auth/AuthContext';
 import Router from './routes';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import CustomThemeProvider from './theme/ThemeContext';
+import { LazyMotion, domMax } from 'framer-motion';
+import './locales';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const queryClient = new QueryClient();
 
 function App() {
-    return (
-        <CustomThemeProvider>
-            <QueryClientProvider client={queryClient}>
-                <AuthProvider>
-                    <BrowserRouter>
-                        <Router />
-                    </BrowserRouter>
-                </AuthProvider>
-            </QueryClientProvider>
-        </CustomThemeProvider>
-    );
+  return (
+    <CustomThemeProvider>
+      <ToastContainer />
+      <QueryClientProvider client={queryClient}>
+        <AuthProvider>
+          <LazyMotion strict features={domMax}>
+            <BrowserRouter>
+              <Router />
+            </BrowserRouter>
+          </LazyMotion>
+        </AuthProvider>
+      </QueryClientProvider>
+    </CustomThemeProvider>
+  );
 }
 
 export default App;
