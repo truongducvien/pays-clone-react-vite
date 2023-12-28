@@ -47,6 +47,7 @@ const getTypography = (): ThemeOptions['typography'] => ({
   },
   caption: {
     lineHeight: 22 / 14,
+    fontWeight: 500,
     ...responsiveFontSize({ lg: 14 }),
   },
 });

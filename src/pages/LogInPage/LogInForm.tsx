@@ -7,8 +7,7 @@ import { Icon } from '@iconify/react/dist/iconify.js';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useMutation } from 'react-query';
-import { APIS } from '@/api';
-import { LogInPayload, LogInResponse } from '@/api/auth';
+import { LogInPayload, LogInResponse, logIn } from '@/api/auth';
 import useAuthContext from '@/auth/useAuthContext';
 import LoadingButton from '@mui/lab/LoadingButton';
 import { AxiosError } from 'axios';
@@ -41,7 +40,7 @@ export default function LogInForm() {
 
   const { mutate, isLoading } = useMutation<LogInResponse, AxiosError<ErrorResponse>, LogInPayload>(
     {
-      mutationFn: APIS.logIn,
+      mutationFn: logIn,
     }
   );
 

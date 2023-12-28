@@ -9,6 +9,12 @@ const enLang = {
     email: 'Email adress',
     password: 'Password',
     login: 'Log in',
+    general: 'General',
+    management: 'Management',
+    dashBoard: 'Dashboard',
+    setting: 'Setting',
+    paymentMethod: 'Payment method',
+    subAdmin: 'Sub-Admin',
   },
   validation: {
     emailRequired: 'Email is required',

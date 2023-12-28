@@ -1,9 +1,10 @@
 import { AuthGuard } from '@/auth/guard';
 import { ROUTES } from '@/constants';
 import { Navigate, useRoutes } from 'react-router-dom';
-import { LogInPage } from './element';
+import { LogInPage, PageNotFound } from './element';
 import AuthLayout from '@/layout/auth/AuthLayout';
 import GuestGuard from '@/auth/guard/GuestGuard';
+import AdminLayout from '@/layout/admin/AdminLayout';
 
 export default function Router() {
   return useRoutes([
@@ -28,12 +29,29 @@ export default function Router() {
     },
     {
       path: ROUTES.ROOT,
-      element: (
-        <AuthGuard>
-          <h2>Root</h2>
-        </AuthGuard>
-      ),
-      children: [],
+      element: <AdminLayout />,
+      children: [
+        {
+          index: true,
+          element: (
+            <AuthGuard>
+              <h2>Root</h2>
+            </AuthGuard>
+          ),
+        },
+        {
+          path: ROUTES.PAYMENT_METHOD,
+          element: (
+            <AuthGuard>
+              <h2>PAYMENT_METHOD</h2>
+            </AuthGuard>
+          ),
+        },
+      ],
+    },
+    {
+      path: '*',
+      element: <PageNotFound />,
     },
   ]);
 }

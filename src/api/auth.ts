@@ -12,24 +12,11 @@ export interface LogInResponse {
   userId?: number;
 }
 
-export interface User {
-  id: 0;
-  name: string;
-  phoneNumber: string;
-  emailAddress: string;
-  gender: string;
-  dateOfBirth: string;
-  avatarUrl: string;
-  enableBiometric: true;
-  countryCode: string;
-}
-
-const ENDPOINT = {
+export const AUTH_ENDPOINT = {
   LOG_IN: 'api/services/app/TokenAuth/Authenticate',
-  USER_PROFILE: 'api/services/app/User/Profile',
 };
 
 export const logIn = async (data: LogInPayload): Promise<LogInResponse> => {
-  const res = await axiosInstance.post(ENDPOINT.LOG_IN, data);
+  const res = await axiosInstance.post(AUTH_ENDPOINT.LOG_IN, data);
   return res?.data.result;
 };
