@@ -18,5 +18,5 @@ export const AUTH_ENDPOINT = {
 
 export const logIn = async (data: LogInPayload): Promise<LogInResponse> => {
   const res = await axiosInstance.post(AUTH_ENDPOINT.LOG_IN, data);
-  return res?.data.result;
+  return res?.data;
 };
