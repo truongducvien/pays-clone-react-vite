@@ -34,10 +34,10 @@ export const USER_ENDPOINT = {
 
 export const getUserProfile = async (): Promise<UserResponse> => {
   const res = await axiosInstance.get(USER_ENDPOINT.USER_PROFILE);
-  return res?.data.result;
+  return res?.data;
 };
 
 export const getUserAccount = async (): Promise<AccountResponse> => {
   const res = await axiosInstance.get(USER_ENDPOINT.ACCOUNT_INFO);
-  return res?.data.result;
+  return res?.data;
 };

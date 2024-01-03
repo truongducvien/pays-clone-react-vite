@@ -12,7 +12,8 @@ const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
       refetchOnWindowFocus: false,
-      retry: false,
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      retry: (_, error: any) => !!error.retry, // retry is set in the axios interceptor
     },
   },
 });

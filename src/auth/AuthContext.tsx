@@ -24,6 +24,7 @@ export default function AuthProvider({ children }: { children: ReactNode }) {
   const handleLogIn = (payload: LogInResponse) => {
     setIsAuthenticated(true);
     setSessionStorage('accessToken', payload.accessToken);
+    setSessionStorage('refreshToken', payload.refreshToken);
   };
 
   const handleLogOut = () => {};
