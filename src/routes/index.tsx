@@ -29,23 +29,19 @@ export default function Router() {
     },
     {
       path: ROUTES.ROOT,
-      element: <AdminLayout />,
+      element: (
+        <AuthGuard>
+          <AdminLayout />
+        </AuthGuard>
+      ),
       children: [
         {
           index: true,
-          element: (
-            <AuthGuard>
-              <h2>Root</h2>
-            </AuthGuard>
-          ),
+          element: <h2>Root</h2>,
         },
         {
           path: ROUTES.PAYMENT_METHOD,
-          element: (
-            <AuthGuard>
-              <h2>PAYMENT_METHOD</h2>
-            </AuthGuard>
-          ),
+          element: <h2>PAYMENT_METHOD</h2>,
         },
       ],
     },
