@@ -80,12 +80,13 @@ axiosInstance.interceptors.response.use(
   }
 );
 
-const handleAxiosError = (error: AxiosError<ErrorResponse>) => {
+const handleAxiosError = (error: AxiosError<ErrorResponse>): boolean => {
   toast(error.response?.data.error.message, {
     type: 'error',
     hideProgressBar: true,
     autoClose: 3000,
   });
+  return true;
 };
 
 export { axiosInstance, handleAxiosError };

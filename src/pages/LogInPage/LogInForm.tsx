@@ -6,12 +6,12 @@ import { useState } from 'react';
 import { Icon } from '@iconify/react/dist/iconify.js';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { useMutation } from 'react-query';
-import { LogInPayload, LogInResponse, logIn } from '@/api/auth';
+
+import { LogInPayload, LogInResponse } from '@/api/auth';
 import useAuthContext from '@/auth/useAuthContext';
 import LoadingButton from '@mui/lab/LoadingButton';
-import { AxiosError } from 'axios';
-import { ErrorResponse, handleAxiosError } from '@/utils';
+import { handleAxiosError } from '@/utils';
+import { useLogIn } from '@/hooks/react-query';
 
 interface FormValuesTypes {
   email: string;
@@ -38,11 +38,7 @@ export default function LogInForm() {
 
   const [showPassword, setShowPassword] = useState<boolean>(false);
 
-  const { mutate, isLoading } = useMutation<LogInResponse, AxiosError<ErrorResponse>, LogInPayload>(
-    {
-      mutationFn: logIn,
-    }
-  );
+  const { mutate, isPending } = useLogIn();
 
   const onSubmit = ({ email, password }: FormValuesTypes) => {
     const submitData: LogInPayload = {
@@ -80,7 +76,7 @@ export default function LogInForm() {
         />
         <LoadingButton
           type="submit"
-          loading={isLoading}
+          loading={isPending}
           variant={'contained'}
           fullWidth
           sx={{ marginTop: '20px' }}

@@ -1,22 +1,11 @@
-import { USER_ENDPOINT, getUserAccount, getUserProfile } from '@/api/user';
-import { handleAxiosError } from '@/utils';
+import { useGetUserAccount, useGetUserProfile } from '@/hooks/react-query';
 import { Avatar, Box, Stack, Tooltip, Typography, alpha, useTheme } from '@mui/material';
-import { useQuery } from 'react-query';
 
 export default function AccountSection() {
   const theme = useTheme();
 
-  const { data: userAccount } = useQuery({
-    queryKey: [USER_ENDPOINT.ACCOUNT_INFO],
-    queryFn: getUserAccount,
-    onError: handleAxiosError,
-  });
-
-  const { data: userInfo } = useQuery({
-    queryKey: [USER_ENDPOINT.USER_PROFILE],
-    queryFn: getUserProfile,
-    onError: handleAxiosError,
-  });
+  const { data: userAccount } = useGetUserAccount();
+  const { data: userInfo } = useGetUserProfile();
 
   return (
     <Stack
