@@ -10,4 +10,5 @@ const Loadable = (Component: ElementType) => (props: any) =>
   );
 
 export const LogInPage = Loadable(lazy(() => import('../pages/LogInPage')));
+export const SubAdminPage = Loadable(lazy(() => import('../pages/SubAdminPage')));
 export const PageNotFound = Loadable(lazy(() => import('../pages/404')));

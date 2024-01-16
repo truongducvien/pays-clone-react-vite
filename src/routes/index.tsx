@@ -1,7 +1,7 @@
 import { AuthGuard } from '@/auth/guard';
 import { ROUTES } from '@/constants';
 import { Navigate, useRoutes } from 'react-router-dom';
-import { LogInPage, PageNotFound } from './element';
+import { LogInPage, PageNotFound, SubAdminPage } from './element';
 import AuthLayout from '@/layout/auth/AuthLayout';
 import GuestGuard from '@/auth/guard/GuestGuard';
 import AdminLayout from '@/layout/admin/AdminLayout';
@@ -42,6 +42,10 @@ export default function Router() {
         {
           path: ROUTES.PAYMENT_METHOD,
           element: <h2>PAYMENT_METHOD</h2>,
+        },
+        {
+          path: ROUTES.SUB_ADMIN,
+          element: <SubAdminPage />,
         },
       ],
     },

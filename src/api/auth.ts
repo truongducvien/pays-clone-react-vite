@@ -1,3 +1,4 @@
+import { LOG_IN } from '@/constants';
 import { axiosInstance } from '@/utils';
 
 export interface LogInPayload {
@@ -12,11 +13,7 @@ export interface LogInResponse {
   userId?: number;
 }
 
-export const AUTH_ENDPOINT = {
-  LOG_IN: 'api/services/app/TokenAuth/Authenticate',
-};
-
 export const logIn = async (data: LogInPayload): Promise<LogInResponse> => {
-  const res = await axiosInstance.post(AUTH_ENDPOINT.LOG_IN, data);
+  const res = await axiosInstance.post(LOG_IN, data);
   return res?.data;
 };

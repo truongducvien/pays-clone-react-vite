@@ -1,5 +1,5 @@
 import { Outlet } from 'react-router-dom';
-import { StyledContainer, StyledContent } from './styles';
+import { StyledContainer, StyledContent } from '../styles';
 import NavLayout from '../nav';
 import { useState } from 'react';
 import { Icon } from '@iconify/react/dist/iconify.js';

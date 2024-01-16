@@ -1,5 +1,5 @@
 import { Drawer, useMediaQuery, useTheme } from '@mui/material';
-import { StyledNavDestop } from '../admin/styles';
+import { StyledNavDestop } from '../styles';
 import { VerticalNav } from '@/components/nav';
 
 interface Props {
