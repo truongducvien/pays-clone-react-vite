@@ -14,6 +14,9 @@ export default function CustomThemeProvider({ children }: { children: ReactNode 
 
   let theme: ThemeOptions = createTheme({
     palette: getPalette(mode),
+    shape: {
+      borderRadius: 8,
+    },
   });
 
   theme = createTheme({

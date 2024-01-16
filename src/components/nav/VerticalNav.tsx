@@ -10,7 +10,6 @@ export default function VerticalNav() {
   return (
     <Stack
       width={'100%'}
-      maxWidth={'280px'}
       height={'100%'}
       boxSizing={'border-box'}
       padding={'22px 16px'}

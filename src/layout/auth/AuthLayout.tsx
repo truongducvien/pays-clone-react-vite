@@ -19,7 +19,7 @@ export default function AuthLayout() {
           <Box>
             <Box
               component={'img'}
-              src="/public-images/login_background.png"
+              src="/public-images/background.png"
               sx={{
                 width: '100%',
                 height: '100%',

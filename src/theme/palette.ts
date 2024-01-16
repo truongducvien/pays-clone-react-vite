@@ -38,10 +38,11 @@ const getPalette = (mode: ThemeMode): PaletteOptions => ({
     },
     error: { main: '#e53835' },
     warning: { main: '#fbc02d' },
-    info: { main: '#2194f3' },
-    success: { main: '#2e7d31' },
+    info: { light: '#EFF8FF', main: '#2194f3' },
+    success: { light: '#5DFFA736', main: '#2e7d31' },
     background: {
       default: '#f0f6fd',
+      paper: '#fff',
     },
     action: {
       hover: alpha(GREY[500], 0.08),

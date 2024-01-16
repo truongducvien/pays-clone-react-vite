@@ -41,7 +41,7 @@ const menu = [
         key: 'subAdmin',
         title: i18n.t('label.subAdmin'),
         icon: <SubAdminIcon />,
-        path: null,
+        path: ROUTES.SUB_ADMIN,
         permissions: [],
         children: [],
       },
